@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: k8-service
+spec:
+  type: NodePort
+  selector:
+    app: nginx-rs
+  ports:
+    - name: http
+      nodePort: 32080 # Listening port on External IPs
+      port: 81 # Listening port on Internal IPs
+      protocol: TCP
+      targetPort: 81 # Pod’s listening port
+      
